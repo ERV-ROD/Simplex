@@ -1,0 +1,10 @@
+/IOProject01
+IOProject01/
+.IOProject01
+.vscode/
+--pycache--/
+__pycache__
+/__pycache__
+backend/docs/_build
+backend/docs/_build/
+/backend/docs/_build

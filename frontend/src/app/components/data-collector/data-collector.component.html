@@ -1,0 +1,68 @@
+<div class="config">
+    
+    <form action="">
+
+        <!--Constraints box-->
+        <div class="box">
+            <label for="">Number of contraints</label>
+            <input type="number" (change)="onConstraintsChange($event)">
+        </div>
+
+        <!--Type box-->
+        <div class="box">
+            <label for="">Type</label>
+            <select name="" id="" (change)="onTypeChange($event)">
+                <option value="Max">Max</option>
+                <option value="Min">Min</option>
+            </select>
+        </div>
+
+        <!--Variables box-->
+        <div class="box">
+            <label for="">Number of variables</label>
+            <input type="number" name="" id="" (change)="onVariableChange($event)">
+        </div>
+
+    </form>
+</div>
+
+
+<div class="objectiveFunction">
+    <form action="" class="formBox">
+        <div class="equation">
+            <p>F(x)=</p> 
+        </div>
+        <div class="equation" *ngFor="let i of numberOfVariables(variables);let index = index">
+            <input type="number" id="x{{index+1}}"><p>X{{index+1}}</p><p *ngIf="index < variables-1">+</p>
+        </div>
+    </form>
+</div>
+
+
+<div class="system">
+    <form action="" class="formBox">
+        <div class="row" *ngFor="let j of numberOfConstraints(constraints); let jIndex = index">
+            <div class="equation" *ngFor="let i of numberOfVariables(variables);let index = index">
+                <input type="number"  id="y{{index+1 + 10*jIndex}}"><p>X{{index+1}}</p><p *ngIf="index < variables-1">+</p>
+            </div>
+            <div class="equation">
+                <select name="" id="{{jIndex}}" (change)="onSymbolChange($event)" >
+                    <option value="1">=</option>
+                    <option value="2">≤</option>
+                    <option value="3">≥</option>
+                </select>
+            </div>
+            <div class="equation">
+                <input type="number" id="z{{jIndex+1}}">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="button-container">
+    <button (click)="saveAllData()" [ngStyle]="{'display': variables === 0 || constraints === 0 ? 'none' : 'flex'}">SOLVE </button>
+</div>
+  
+  
+  
+  

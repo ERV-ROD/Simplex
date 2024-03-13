@@ -1,0 +1,40 @@
+<div class="solution">
+    <div class="header box">
+        <p>Simplex Method Solution</p>
+    </div>
+    <div class="tables box">
+        <div *ngFor="let array of tables; let tableIndex = index" class="tableContainer">
+            <p>{{ tableIndex === 0 ? 'Initial Table' : 'Iteration ' + tableIndex }}</p>
+            <table>
+                <tr>
+                    <td></td>
+                    <td *ngFor="let value of columns;">
+                        {{value}}
+                    </td>
+
+                    <td>Sol</td>
+                </tr>
+                <tr *ngFor="let row of array; let i = index">
+                    <td>{{ i === 0 ? 'Z' : rows[tableIndex][i - 1] }}</td>
+                    <td *ngFor="let cell of row; let j = index" [ngStyle]="{'background-color': j === RCPair[tableIndex][1] || i === RCPair[tableIndex][0] ? '#c9c9c9' : 'transparent'}">
+                      {{cell }}
+                    </td>
+                </tr>
+            </table>
+        </div>  
+    </div>
+
+    <p class="summary" *ngIf="tables !== undefined">The {{type == "Max" ? "maximum" : "minimun"}} value is <span class="zValue">{{tables[tables.length - 1][0][columns.length]}}</span> , you can get this result with the following variables:</p>
+
+
+    <div class="solutionContainer">
+        <div class="variable" *ngFor="let value of rows[rows.length - 1]; let i=index;">
+          <p>{{value}}: {{tables[tables.length - 1][i + 1][columns.length]}}</p>
+        </div>
+    </div>
+      
+
+    <div class="options box">
+        <button (click)="getCSV()">Download CSV <i class="fa-solid fa-download" style="color: #ffffff;"></i></button>
+    </div>
+</div>

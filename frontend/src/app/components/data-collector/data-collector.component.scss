@@ -1,0 +1,150 @@
+
+@mixin sketchBox(){
+    width: 95%;
+    margin:2rem auto;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: #f4f4f479;
+    border: 1px dashed #474747;
+    justify-content: center; 
+}
+
+@mixin formBox($direction,$font-size){
+    display: flex;
+    align-items: center;
+    flex-direction: $direction;
+    font-family: 'Roboto', sans-serif;
+    font-size: $font-size;
+    width: auto;
+    overflow-x: auto;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.config{
+    width: 100%;
+    min-height:10%;
+    background-color: #b13449;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+
+    display:flex;
+    justify-content:center;
+
+    form{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .box{
+            padding: 1rem 3rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+
+            select,input{
+                margin-left: 1rem;
+                padding: .5rem 1rem;
+                border-radius: .5rem;
+                font-family: 'Roboto', sans-serif;
+                font-size: 1.5rem;
+                border:1px solid transparent;
+                outline: none;
+                width:8rem;
+            }
+
+            label{
+                font-family: 'Roboto', sans-serif;
+                font-size: 2.5rem;
+                color:#ffffff;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+.objectiveFunction{
+    @include sketchBox();
+    min-height:10%;
+
+    .formBox{
+        @include formBox(row,2rem);
+
+        .equation{
+            display: flex;
+            align-items: center;
+            margin: .5rem;
+            input{
+                width:13rem;
+                padding:1rem;
+                margin:0 .5rem 0 0;
+                border-radius: .5rem;
+                border:1px solid #323232;
+                font-size:1.4rem;
+            }
+        } 
+        p{
+            margin:.5rem;
+        }
+    }
+}
+
+.system{
+    @include sketchBox();
+    height:70%;
+
+
+    .formBox{
+        @include formBox(column,1.5rem);
+        max-height: 100%;
+
+        .row{
+            display: flex;
+            width: 100%;
+        }
+
+        .equation{
+            display: flex;
+            align-items: center;
+            margin: .5rem;
+
+            input{
+                width:9rem;
+                padding:1rem;
+                margin:0 .5rem 0 0;
+                border-radius: .5rem;
+                border:1px solid #323232;
+                font-size: 1.4rem;
+            }
+        } 
+        p{ margin:.5rem;}
+    }
+}
+
+.button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition:all ease 0.5s;
+  
+    button {
+      padding: 10px 20px;
+      background-color: #ffffff;
+      border-radius: .5rem;
+      color: #b13449;
+      font-family: 'Roboto', sans-serif;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.7rem;
+      transition:all ease 0.5s;
+    
+    }
+  }
+  
